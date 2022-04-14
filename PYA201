@@ -1,0 +1,9 @@
+import requests as rs
+import re
+
+data = rs.get('http://tqc.codejudger.com:3000/target/5201.html')
+str1 = input('請輸入欲搜尋的字串 : ')
+strcount = re.findall(str1,data.text)
+
+print('{} 搜尋成功'.format(str1))
+print('{} 出現 {} 次'.format(str1,len(strcount)))
