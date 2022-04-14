@@ -1,0 +1,8 @@
+import json
+
+with open('read.json', 'r' , encoding='utf-8') as file:
+    dict1 = json.loads(file.readline())
+with open('write.csv' ,'w',encoding='utf-8') as file:
+    for i in range(len(dict1)):
+        file.write(dict1[i]['title']+','+dict1[i]['showUnit']+
+        ','+dict1[i]['startDate']+','+dict1[i]['endDate']+'\n')
