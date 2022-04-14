@@ -1,0 +1,12 @@
+import pandas as pd
+import csv
+
+data = pd.read_html('read.html',encoding='utf-8')
+
+with open('write.csv' ,'w',encoding='utf-8') as file:
+    csv.writer(file).writerow([data[1].columns[0],data[1].columns[1]])
+    for i in range(len(data[1])):
+        csv.writer(file).writerow([data[1].iloc[i][0], '{:.3f}'.format(data[1].iloc[i][1])])
+
+
+# iloc[]是用index位置來取我們要的資料
