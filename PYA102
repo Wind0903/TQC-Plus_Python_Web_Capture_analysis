@@ -1,0 +1,12 @@
+import xml.etree.ElementTree as ET
+
+tree = ET.ElementTree(file = 'read.xml')
+root = tree.getroot()
+
+with open('write.csv' ,'w' ,encoding='utf-8') as file:
+    for row in root:
+        sno = row.find('sno').text
+        sna = row.find('sna').text
+        tot = row.find('tot').text
+        sbi = row.find('sbi').text
+        file.write('{},{},{},{}\n'.format(sno,sna,tot,sbi))
