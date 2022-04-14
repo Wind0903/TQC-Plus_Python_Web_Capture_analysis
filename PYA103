@@ -1,0 +1,11 @@
+import json
+
+with open('read.json' , 'r' , encoding='utf-8') as file:
+    dict1 = json.loads(file.readline())
+
+with open('write.yaml' ,'w' , encoding='utf-8') as file:
+    for line in range(len(dict1)):
+        file.write('- 投保薪資等級: {}\n'.format(dict1[line]['投保薪資等級']))
+        file.write('- 月投保薪資: {}\n'.format(dict1[line]['月投保薪資']))
+        file.write('- 月薪資總額: {}\n'.format(dict1[line]['月薪資總額']))
+        file.write('- 身分別: {}\n'.format(dict1[line]['身分別']))
