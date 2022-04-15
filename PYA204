@@ -1,0 +1,21 @@
+import json
+import requests as re
+
+
+data = re.get('http://tqc.codejudger.com:3000/target/5204.json')#API Address
+data = json.loads(data.text)
+
+print('新北市大專院校名單 : \n')
+
+for i in data:
+    if i['type'] == '公所':
+        print('名稱 : {}'.format(i['name']))
+        print('地址 : {}'.format(i['address']))
+        print('聯絡電話 : {}'.format(i['tel']))
+        print('網站 : {}'.format(i['website']))
+        print('資料更新時間 : {}'.format(i['update_date']))
+        print()
+
+
+
+
