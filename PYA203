@@ -1,0 +1,23 @@
+import requests as re
+import bs4
+
+data = re.get('http://tqc.codejudger.com:3000/target/5203.html')
+
+objSoup = bs4.BeautifulSoup(data.text,'lxml')
+dataTag = objSoup.select('.contents_box02')
+
+balls = dataTag[2].find_all('div', {'class':'ball_tx ball_yellow'} )
+
+print('大樂透開獎 :\n')
+print('-------------\n')
+print('開出順序 : ',end='')
+for i in range(6):
+    print(balls[i].text,end='   ',)
+
+
+print('\n大小順序 : ' , end='')
+for i in range(6, len(balls)):
+    print(balls[i].text, end='   ')
+
+redballs = dataTag[2].find_all('div',{'class':'ball_red'})
+print('\n特別號   : {}'.format(redballs[0].text))
