@@ -1,0 +1,16 @@
+import json
+import requests as re
+
+data = re.get('http://tqc.codejudger.com:3000/target/5205.json')
+print('Content-Length:',len(data.content))
+data = json.loads(data.text)
+print()
+
+print('新北市PM2.5相關資料：')
+for record in data:
+    if record['County'] == '新北市':
+        print('%s：' %(record['SiteName']))
+        print('\tAQI：%s' %(record['AQI']))
+        print('\tPM2.5：%s' %(record['PM2.5']))
+        print('\tPM10：%s' %(record['PM10']))
+        print('\t資料更新時間：%s'%(record['PublishTime']))
